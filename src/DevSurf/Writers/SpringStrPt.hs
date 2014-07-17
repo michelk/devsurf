@@ -38,7 +38,7 @@ renderVertex (x,y,z) = printf "%6s%10.3f%10.3f%10.3f" ("" :: String) x y z
 
 renderHeader :: StrConfig -> String
 renderHeader (StrConfig t c d a s g) =
-  printf "\n\n\n\n%s | %s | @ %i %i %i @ %s; %s\n" a (ts :: String) c s g d
+  printf "\n\n\n\n%s | %s | @ %i %i %i @ %s\n" a (ts :: String) c s g d
   where
     ts = case t of
       Point   -> "p"
