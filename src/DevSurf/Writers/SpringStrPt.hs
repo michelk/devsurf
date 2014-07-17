@@ -19,7 +19,7 @@ defaultConfig :: StrConfig
 defaultConfig = StrConfig {
    strType   = Point
   ,strColor  = 53               -- ^ red
-  ,strDesc   = ""
+  ,strDesc   = "__"
   ,strAttr   = "KKKK"
   ,strSymbol = 3
   ,strSize   = 3
@@ -34,7 +34,7 @@ renderDefautlStrPt :: [Vertex] -> String
 renderDefautlStrPt = renderStrPt defaultConfig
 
 renderVertex :: Vertex -> String
-renderVertex (x,y,z) = printf "%6s%10.3f%10.3f%10.3f\n" ("" :: String) x y z
+renderVertex (x,y,z) = printf "%6s%10.2f%10.2f%7.3f\n" ("" :: String) x y z
 
 renderHeader :: StrConfig -> String
 renderHeader (StrConfig t c d a s g) =
