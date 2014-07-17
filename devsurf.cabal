@@ -1,26 +1,67 @@
 name:          devsurf
-version:       0.0.0
-category:      Language
+version:       0.0.1.0
+category:
 synopsis:      A developable surface design language.
-description:   DevSurf is a modeling langauge for constructing developable surfaces.
-author:        Tom Hawkins <tomahawkins@gmail.com>
-maintainer:    Tom Hawkins <tomahawkins@gmail.com>
+description:   DevSurf is a modeling language for constructing developable surfaces.
+author:        Tom Hawkins <tomahawkins@gmail.com>, Michel Kuhlmann <michel@kuhlmanns.info>
+maintainer:    Michel Kuhlmann <michel@kuhlmanns.info>
 license:       BSD3
 license-file:  LICENSE
-homepage:      http://tomahawkins.org
+homepage:      http://github.com/michelk/devsurf
 build-type:    Simple
 cabal-version: >= 1.8
 
 library
-  build-depends:   base
-  exposed-modules: Language.DevSurf
-                   Language.DevSurf.STL
-                   Language.DevSurf.SVG
-                   Language.DevSurf.Types
-  extensions:      TypeSynonymInstances, FlexibleInstances
-  ghc-options:     -W
+  hs-source-dirs:  src
+  build-depends:   base,
+                   unordered-containers,
+                   text,
+                   attoparsec
 
+  exposed-modules: DevSurf
+                   -- Library
+                   DevSurf.Types
+                   DevSurf.Face
+                   DevSurf.Edge
+                   DevSurf.IndexedFaceSet
+                   DevSurf.Curve
+                   DevSurf.Panel
+                   DevSurf.PanelFace
+                   DevSurf.Vector
+                   DevSurf.Transform
+                   -- Readers
+                   DevSurf.Readers
+                   DevSurf.Readers.Sms2dm
+                   DevSurf.Readers.ShewTriangle
+                   DevSurf.Readers.Xyz
+                   -- Writers
+                   DevSurf.Writers
+                   DevSurf.Writers.Utils
+                   DevSurf.Writers.PLY
+                   DevSurf.Writers.OBJ
+                   DevSurf.Writers.ShewTriangle
+                   DevSurf.Writers.Sms2dm
+                   DevSurf.Writers.STL
+                   DevSurf.Writers.SVG
+                   DevSurf.Writers.Xyz
+                   DevSurf.Writers.Vtk
+                   DevSurf.Writers.Index
+                   DevSurf.Writers.SpringStrPt
+ ghc-options:     -W
 source-repository head
   type:     git
-  location: git://github.com/tomahawkins/devsurf.git
+  location: git://github.com/michelk/devsurf.git
 
+executable mshConv
+  main-is:           mshConv.hs
+  -- other-modules:
+  ghc-options:
+          -threaded
+          -rtsopts
+  build-depends:     base,
+                     unordered-containers,
+                     filepath,
+                     cmdargs,
+                     text,
+                     devsurf
+  hs-source-dirs:    bin

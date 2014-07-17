@@ -1,20 +1,20 @@
-module Language.DevSurf.STL
-  ( exportSTL
+module DevSurf.Writers.STL
+  ( renderSTL
   ) where
-
-import Language.DevSurf.Types
+import DevSurf.Face
+import DevSurf.Types
 
 -- | Generate a STL file from a 'Mesh'.
-exportSTL :: Mesh -> String
-exportSTL mesh = unlines
+renderSTL :: [Face] -> String
+renderSTL mesh = unlines
   [ "solid "
-  , concatMap triangle mesh
+  , concatMap face mesh
   , "endsolid "
   ]
   where
-  triangle :: Triangle -> String
-  triangle t@(a, b, c) = unlines
-    [ "facet normal " ++ showVector (triangleNormal t)
+  face :: Face -> String
+  face t@(a,b,c) = unlines
+    [ "facet normal " ++ showVector (faceNormal t)
     , "  outer loop"
     , "    vertex " ++ showVector a
     , "    vertex " ++ showVector b
@@ -22,7 +22,6 @@ exportSTL mesh = unlines
     , "  endloop"
     , "endfacet"
     ]
-
   showVector :: Vector -> String
   showVector (x, y, z) = show x ++ " " ++ show y ++ "  " ++ show z
 

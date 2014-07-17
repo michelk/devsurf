@@ -1,10 +1,10 @@
-module Language.DevSurf.SVG
+module DevSurf.Writers.SVG
   ( exportSVG
   ) where
 
 import Text.Printf
 
-import Language.DevSurf.Types
+import DevSurf.Types
 
 -- | Plot a list of 'Curve's, projected onto the XY plane, in SVG.
 exportSVG :: [Curve] -> String
@@ -18,5 +18,6 @@ exportSVG curves = unlines
   ]
 
 line' :: Vector -> Vector -> String
-line' (x1, y1, _) (x2, y2, _) = printf "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" stroke=\"black\" stroke-width=\"1\" />" x1 y1 x2 y2
+line' (x1, y1, _) (x2, y2, _) = 
+    printf "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" stroke=\"black\" stroke-width=\"1\" />" x1 y1 x2 y2
 
