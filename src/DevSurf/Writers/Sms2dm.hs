@@ -1,7 +1,4 @@
-module DevSurf.Writers.Sms2dm
-( renderSms2dm
-)
-where
+module DevSurf.Writers.Sms2dm (renderSms2dm) where
 import DevSurf.Types
 import Data.HashMap.Lazy (toList)
 import Data.List (intersperse)

@@ -34,6 +34,7 @@ library
                    DevSurf.Readers.Sms2dm
                    DevSurf.Readers.ShewTriangle
                    DevSurf.Readers.Xyz
+                   DevSurf.Readers.Obj
                    -- Writers
                    DevSurf.Writers
                    DevSurf.Writers.Utils

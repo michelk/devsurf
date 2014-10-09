@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module DevSurf.Readers.Obj where
+module DevSurf.Readers.Obj (parseObj) where
 import Control.Applicative
 import           Data.Attoparsec.Text
 import qualified Data.Text  as T

@@ -53,6 +53,8 @@ dispatchReaderWriter reader writer
     T.pack . renderPly . smsMsh . parse2dm
   | reader == "2dm" && writer == "vtk" =
     T.pack . renderVtk . smsMsh . parse2dm
+  | reader == "obj" && writer == "2dm" =
+    T.pack . renderSms2dm . parseObj
   | reader == "2dm" && writer == "obj" =
     T.pack . renderObj . smsMsh . parse2dm
   | reader == "2dm" && writer == "str" =
