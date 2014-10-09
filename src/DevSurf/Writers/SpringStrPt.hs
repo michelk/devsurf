@@ -18,7 +18,7 @@ data StrConfig = StrConfig {
 defaultConfig :: StrConfig
 defaultConfig = StrConfig {
    strType   = Point
-  ,strColor  = 53               -- ^ red
+  ,strColor  = 53               --  red
   ,strDesc   = "__"
   ,strAttr   = "KKKK"
   ,strSymbol = 3

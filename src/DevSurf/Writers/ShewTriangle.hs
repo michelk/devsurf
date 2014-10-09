@@ -24,7 +24,7 @@ toShewTriangle ::
 toShewTriangle (IndexedFaceSet  nes nm ) = 
   (nodeMapToTriangleString nm, unlines $ esh : es)
   where
-    esh = show (size nes) ++ " 3 0" -- ^ triangle-ele-header
+    esh = show (size nes) ++ " 3 0"
     es = Prelude.map ele2string $ toList nes
     ele2string :: (Int, IndexedFace) -> String
     ele2string (n, (a,b,c)) = 
@@ -33,7 +33,7 @@ toShewTriangle (IndexedFaceSet  nes nm ) =
 nodeMapToTriangleString :: HashMap Int Vertex -> String
 nodeMapToTriangleString nm = unlines $ psh :  ns
   where
-    psh = show (size nm) ++ " 2 1 0" -- ^ triangle-node-header
+    psh = show (size nm) ++ " 2 1 0"
     ns = Prelude.map vert2string $ toList nm
     vert2string :: (Int, Vertex) -> String
     vert2string (n,(x,y,z)) = show n ++ " " ++  show x ++ " " ++ show y ++ " " ++ show z

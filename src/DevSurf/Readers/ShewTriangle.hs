@@ -5,11 +5,7 @@ import Data.HashMap.Lazy (fromList, HashMap)
 
 -- Types for Shewchuck's triangle mesh generator
 -- =============================================
-parseShewTriangle :: 
-  (
-    String                      -- ^ Node string
-  , String                      -- ^ Element string
-  ) 
+parseShewTriangle :: ( String , String) 
   -> IndexedFaceSet
 parseShewTriangle (ns, es) =
    IndexedFaceSet (parseShewEles es) (parseShewNodes ns) 
