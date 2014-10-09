@@ -1,11 +1,17 @@
 {-# LANGUAGE OverloadedStrings #-}
-module DevSurf.Readers.Obj (parseObj) where
+module DevSurf.Readers.Obj (parseObj, readObj) where
 import Control.Applicative
 import           Data.Attoparsec.Text
 import qualified Data.Text  as T
+import qualified Data.Text.IO  as TIO
 import           DevSurf.Types
 import Data.HashMap.Lazy
 import Data.Char (isSpace)
+
+readObj :: FilePath -> IO IndexedFaceSet
+readObj f = do
+   str <- TIO.readFile f
+   return $ parseObj str
 
 parseObj :: T.Text -> IndexedFaceSet
 parseObj str = case parseOnly obj str of
@@ -13,7 +19,14 @@ parseObj str = case parseOnly obj str of
     Left _  -> error "Failed parsing obj-file"
 
 obj :: Parser IndexedFaceSet
-obj = IndexedFaceSet <$> (faces <* skipLWS) <*>  ( skipLWS *> vertices )
+obj = do
+    skipLWS
+    nds <- vertices
+    skipLWS
+    fcs <- faces
+    skipLWS
+    endOfInput
+    return $ IndexedFaceSet fcs nds
 
 vertex :: Parser Vertex
 vertex =
