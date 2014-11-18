@@ -1,10 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 module DevSurf.Readers.Obj (parseObj, readObj) where
-import Control.Applicative
-import           Data.Attoparsec.Text
-import qualified Data.Text  as T
-import qualified Data.Text.IO  as TIO
-import           DevSurf.Types
+import DevSurf.Readers.Utils
+import Data.Attoparsec.Text
+import Data.Text  as T
+import Data.Text.IO  as TIO
+import DevSurf.Types
 import Data.HashMap.Lazy
 import Data.Char (isSpace)
 
@@ -98,8 +98,3 @@ skipHWS =
         go Comment '\n' = Nothing
         go Comment _ = Just Comment
 
-float :: Parser Double
-float = realToFrac <$> double
-
-int :: Parser Int
-int = decimal

@@ -5,7 +5,7 @@ import Data.HashMap.Lazy (HashMap)
 -- Mesh Formats
 -- ============
 
-data MeshFormat = Xyz | Sms2dm | SpingNet | Obj | Ply | Stl
+data MeshFormat = Xyz | Sms2dm | SpingNet | Obj | Ply | Stl | Dxf
 
 --------------------------
 -- FaceSet data structure
