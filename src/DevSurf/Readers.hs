@@ -4,3 +4,4 @@ import DevSurf.Readers.Sms2dm as X
 --import DevSurf.Readers.SpringNet as X
 import DevSurf.Readers.Xyz as X
 import DevSurf.Readers.Obj as X
+import DevSurf.Readers.Dxf as X

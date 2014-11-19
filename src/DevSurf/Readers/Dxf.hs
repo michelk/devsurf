@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module DevSuf.Readers.Dxf (parseDxf, readDxf) where
+module DevSurf.Readers.Dxf (parseDxf, readDxf) where
 
 import Control.Applicative
 import Data.Attoparsec.Text

@@ -13,11 +13,11 @@ cabal-version: >= 1.8
 
 library
   hs-source-dirs:  src
-  build-depends:   base,
-                   unordered-containers,
-                   text,
-                   split,
-                   attoparsec
+  build-depends:   attoparsec
+                 , base
+                 , split
+                 , text
+                 , unordered-containers
 
   exposed-modules: DevSurf
                    -- Library
@@ -36,6 +36,7 @@ library
                    DevSurf.Readers.ShewTriangle
                    DevSurf.Readers.Xyz
                    DevSurf.Readers.Obj
+                   DevSurf.Readers.Dxf
                    -- Writers
                    DevSurf.Writers
                    DevSurf.Writers.Utils
@@ -60,10 +61,10 @@ executable mshConv
   ghc-options:
           -threaded
           -rtsopts
-  build-depends:     base,
-                     unordered-containers,
-                     filepath,
-                     cmdargs,
-                     text,
-                     devsurf
+  build-depends:     base
+                   , cmdargs
+                   , devsurf
+                   , filepath
+                   , text
+                   , unordered-containers
   hs-source-dirs:    bin

@@ -3,6 +3,7 @@ module Main where
 import Control.Monad (when)
 import Data.Char (toLower)
 import DevSurf.Face (elements)
+import DevSurf.Convert (fsToIfs)
 import DevSurf.Types
 import DevSurf.Readers
 import DevSurf.Writers
@@ -59,6 +60,8 @@ dispatchReaderWriter reader writer
     T.pack . renderObj . smsMsh . parse2dm
   | reader == "2dm" && writer == "str" =
     T.pack . renderDefautlStrPt . elems . ifsVertices . smsMsh . parse2dm
+  | reader == "dxf" && writer == "2dm" =
+    T.pack . renderSms2dm . fsToIfs . parseDxf
   | otherwise =
     error "reader-writer combination not supported"
 

@@ -14,7 +14,7 @@ fsToIfs fs = IndexedFaceSet fcsMap ndsMap
     fcs :: [IndexedFace]
     fcs = map (lookupFace ndsStrMap) fs
     fcsMap = H.fromList $ zip [1..] fcs
-    ndsMap = undefined
+    ndsMap = H.fromList . strMapToNdsMap . H.toList $ ndsStrMap
 
 nodeListStrings :: FaceSet -> [String]
 nodeListStrings = nub . concatMap faceToStrings
@@ -35,6 +35,10 @@ lookupVertex m v = fromJust $ H.lookup (vertexToString v) m
 
 strToVertex :: String -> Vertex
 strToVertex s =
-  let (x:y:z:_) = map read $ splitOn '_' s
+  let (x:y:z:_) = map read $ splitOn "_" s
   in (x,y,z)
 
+strMapToNdsMap :: [(String,Int)]-> [(Int, Vertex)]
+strMapToNdsMap = map strToIntVertex
+  where
+    strToIntVertex (s,i) = (i,strToVertex s)
