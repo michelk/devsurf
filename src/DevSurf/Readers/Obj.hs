@@ -1,9 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 module DevSurf.Readers.Obj (parseObj, readObj) where
 import DevSurf.Readers.Utils
+import Control.Applicative
 import Data.Attoparsec.Text
-import Data.Text  as T
-import Data.Text.IO  as TIO
+import qualified Data.Text  as T
+import qualified Data.Text.IO  as TIO
 import DevSurf.Types
 import Data.HashMap.Lazy
 import Data.Char (isSpace)
