@@ -24,6 +24,7 @@ library
                    DevSurf.Types
                    DevSurf.Face
                    DevSurf.Edge
+                   DevSurf.Convert
                    DevSurf.IndexedFaceSet
                    DevSurf.Curve
                    DevSurf.Panel
